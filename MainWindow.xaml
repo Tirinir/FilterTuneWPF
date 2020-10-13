@@ -4,92 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FilterTuneWPF"
+        xmlns:views="clr-namespace:FilterTuneWPF.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Border Padding="10">
+
+   
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <TextBlock Grid.Column="0" Text="Source Filter:"  Margin="5 5"/>
-
-            <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin ="5 0 0 0">
-                <ComboBox FontWeight="Bold">
-                    <ComboBoxItem>Bad filter</ComboBoxItem>
-                    <ComboBoxItem>Trash filter</ComboBoxItem>
-                    <ComboBoxItem IsSelected="True">Basic filter</ComboBoxItem>
-                </ComboBox>
-
-                <Button x:Name="SelectWorkingDirectory" Click="SelectWorkingDirectory_Click" Content="...">
-                    
-                </Button>
-            </StackPanel>
-            <!-- Template panel -->
-            <StackPanel Grid.Row="1">
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Margin="2 2 2 2"/>
-                    <TextBlock Text="Template1"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Margin="2 2 2 2"/>
-                    <TextBlock Text="Template1"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Margin="2 2 2 2"/>
-                    <TextBlock Text="Template1"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Margin="2 2 2 2"/>
-                    <TextBlock Text="Template1"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Margin="2 2 2 2"/>
-                    <TextBlock Text="Template1"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <CheckBox Margin="2 2 2 2"/>
-                    <TextBlock Text="New template..."/>
-                </StackPanel>
-            </StackPanel>
-            
-            <!-- Main area -->
-            <Grid Grid.Row="1" Grid.Column="1" VerticalAlignment="Stretch">
-                <Grid.RowDefinitions>
-                    <!-- Selectors-->
-                    <RowDefinition Height="*"/>
-                    <!-- Replacement -->
-                    <RowDefinition Height="*"/>
-                    <!-- Menu-->
-                    <RowDefinition Height="30"/>
-                </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" Margin="20 0 20 0">
-                    Selectors
-                </TextBox>
-                <TextBox Grid.Row="1" Margin="20 20 20 0">
-                    Replacement
-                </TextBox>
-                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Button 
-                        Margin="20 0 10 0" 
-                        HorizontalAlignment="Left" 
-                        Content="Save template as"
-                        />
-                    <TextBox Text="New Template 1" VerticalAlignment="Center"/>
-                </StackPanel>
-            </Grid>
-            
-            <Button Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" Content="Save new filter as"/>
-            
-            <StackPanel Grid.Row="1" Grid.Column="2">
-                <TextBox VerticalAlignment="Center" Text="#TheOldFilter"/>
-            </StackPanel>
+            <views:MainScreenView x:Name="MainScreen"/>
         </Grid>
-    </Border>
+
 </Window>

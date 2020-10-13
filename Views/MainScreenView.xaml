@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="FilterTuneWPF.Views.MainScreenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FilterTuneWPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="TemplateResources">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Active}" Margin="2 2 2 2"/>
+                <!--<TextBlock Text="Template1"/>-->
+                <TextBlock Text="{Binding TemplateName}"/>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0" Text="Source Filter:"  Margin="5 5"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin ="5 0 0 0">
+            <ComboBox FontWeight="Bold">
+                <ComboBoxItem>Bad filter</ComboBoxItem>
+                <ComboBoxItem>Trash filter</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">Basic filter</ComboBoxItem>
+            </ComboBox>
+
+            <Button x:Name="SelectWorkingDirectory" Content="...">
+
+            </Button>
+        </StackPanel>
+        <!-- Template panel -->
+        <ListBox 
+                    ItemsSource="{Binding Templates}" 
+                    SelectedItem="{Binding ChosenTemplate}"
+                    ItemTemplate="{StaticResource TemplateResources}"
+                    Grid.Row="1"/>
+
+        <!-- Main area -->
+        <local:TemplateView DataContext="{Binding ChosenTemplate}" Grid.Row="1" Grid.Column="1"/>
+
+        <Button Command = "{Binding TestCommand}" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" Content="Save new filter as"/>
+        <!--I don't know if this part of window is needed-->
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <TextBox VerticalAlignment="Center" Text="{Binding testString}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
