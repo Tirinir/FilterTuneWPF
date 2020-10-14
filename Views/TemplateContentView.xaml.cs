@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace FilterTuneWPF.Views
 {
     /// <summary>
-    /// Interaction logic for TemplateView.xaml
+    /// Interaction logic for TemplateContentView.xaml
     /// </summary>
-    public partial class TemplateView : UserControl
+    public partial class TemplateContentView : UserControl
     {
-        public TemplateView()
+        public TemplateContentView()
         {
             InitializeComponent();
         }

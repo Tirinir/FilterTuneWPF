@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace FilterTuneWPF
@@ -21,15 +22,14 @@ namespace FilterTuneWPF
         }
         public string testString { get; set; }
         public ICommand TestCommand { get; set; }
-        public MainScreenViewModel()
+        private List<TemplateViewModel> LoadTemplates(int numberOfTemplates)
         {
             Templates = new List<TemplateViewModel>();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < numberOfTemplates; i++)
             {
                 Templates.Add(new TemplateViewModel($"This is the {i}th selector", $"This is the {i}th parameter", $"Template {i}"));
             }
-
-            TestCommand = new GenericCommand(x => Test());
+            return (Templates);
         }
         private void Test()
         {
@@ -37,6 +37,15 @@ namespace FilterTuneWPF
             //System.Windows.Media.Color x = (System.Windows.Media.Color)s;
             testString = "Black";
             NotifyPropertyChanged("testString");
+        } 
+        
+        private List<TemplateViewModel> MockSavedTemplates { get; set; }
+        //Initializing variables for main screen
+        public MainScreenViewModel()
+        {
+            Templates = LoadTemplates(5);
+            TestCommand = new GenericCommand(x => Test());
+            MockSavedTemplates = LoadTemplates(5);
         }
     }
 }
