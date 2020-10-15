@@ -28,7 +28,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Text="Source Filter:"  Margin="5 5"/>
+        <!--<TextBlock Grid.Column="0" Text="Source Filter:"  Margin="5 5"/>-->
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin ="5 0 0 0">
             <ComboBox FontWeight="Bold">
@@ -41,15 +41,30 @@
 
             </Button>
         </StackPanel>
-        <!-- Template panel -->
+        <!-- Template selection panel -->
         <ListBox 
                     ItemsSource="{Binding Templates}" 
                     SelectedItem="{Binding ChosenTemplate}"
                     ItemTemplate="{StaticResource TemplateResources}"
                     Grid.Row="1"/>
-
-        <!-- Main area -->
-        <local:TemplateContentView DataContext="{Binding ChosenTemplate}" Grid.Row="1" Grid.Column="1"/>
+        
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <!-- Template content area -->
+            <local:TemplateContentView DataContext="{Binding ChosenTemplate}"/>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
+            <Button 
+                Margin="20 0 10 0" 
+                HorizontalAlignment="Left"         
+                Content="Save template as"
+                Command="{Binding SaveTemplateCommand}"
+                        />
+            <TextBox DataContext="{Binding ChosenTemplate}" Text="{Binding NewTemplateName}" VerticalAlignment="Center"/>
+        </StackPanel>
+        </Grid>
 
         <Button Command = "{Binding TestCommand}" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" Content="Save new filter as"/>
         <!--I don't know if this part of window is needed-->
