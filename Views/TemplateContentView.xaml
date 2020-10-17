@@ -9,14 +9,19 @@
     <!-- Main area -->
     <Grid VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
+            <!--Name-->
+            <RowDefinition Height="30"/>
             <!-- Selectors-->
             <RowDefinition Height="*"/>
             <!-- Replacement -->
             <RowDefinition Height="*"/>
             <!-- Menu-->
-            <!--<RowDefinition Height="30"/>-->
         </Grid.RowDefinitions>
-        <TextBox Text="{Binding Selectors}" Grid.Row="0" Margin="20 0 20 0"/>
-        <TextBox Text="{Binding Parameters}" Grid.Row="1" Margin="20 20 20 0"/>
+        <DockPanel Grid.Row="0" Margin="20 0 20 0">
+            <TextBlock Text="Name" DockPanel.Dock="Left"/>
+            <TextBox Text="{Binding TemplateName, UpdateSourceTrigger=PropertyChanged}"/>
+        </DockPanel>
+        <TextBox Text="{Binding Selectors}" Grid.Row="1" Margin="20 0 20 0"/>
+        <TextBox Text="{Binding Parameters}" Grid.Row="2" Margin="20 20 20 0"/>
     </Grid>
 </UserControl>

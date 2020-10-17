@@ -11,7 +11,6 @@
         <DataTemplate x:Key="TemplateResources">
             <StackPanel Orientation="Horizontal">
                 <CheckBox IsChecked="{Binding Active}" Margin="2 2 2 2"/>
-                <!--<TextBlock Text="Template1"/>-->
                 <TextBlock Text="{Binding TemplateName}"/>
             </StackPanel>
         </DataTemplate>
@@ -39,11 +38,15 @@
             </Button>
         </StackPanel>
         <!-- Template selection panel -->
-        <ListBox 
+        <ListView 
                     ItemsSource="{Binding Templates}" 
-                    SelectedItem="{Binding ChosenTemplate}"
+                    SelectedItem="{Binding ChosenTemplate, Mode=TwoWay}"
                     ItemTemplate="{StaticResource TemplateResources}"
-                    Grid.Row="1"/>
+                    Grid.Row="1">
+            <ListView.InputBindings>
+                <KeyBinding Key="Delete" Command="{Binding RemoveTemplateCommand}"></KeyBinding>
+            </ListView.InputBindings>
+        </ListView>
         
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>

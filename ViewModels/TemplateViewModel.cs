@@ -13,8 +13,16 @@ namespace FilterTuneWPF
             TemplateName = templateName;
             NewTemplateName = templateName;
         }
+        private string templateName;
         public bool Active { get; set; }
-        public string TemplateName { get; set; }
+        public string TemplateName
+        {
+            get => templateName; set
+            {
+                templateName = value;
+                NotifyPropertyChanged("templateName");
+            }
+        }
         public string Selectors { get; set; }
         public string Parameters { get; set; }
         public string NewTemplateName { get; set; }
