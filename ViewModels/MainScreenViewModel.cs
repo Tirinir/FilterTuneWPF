@@ -11,8 +11,8 @@ namespace FilterTuneWPF
     class MainScreenViewModel : Notifier
     {
         private TemplateViewModel chosenTemplate;
-
         public ObservableCollection<TemplateViewModel> Templates { get; set; }
+        public SourceFilters ViewFilters { get; set; }
         public TemplateViewModel ChosenTemplate
         {
             get => chosenTemplate; set
@@ -21,8 +21,8 @@ namespace FilterTuneWPF
                 NotifyPropertyChanged("ChosenTemplate");
             }
         }
-        public string testString { get; set; }
-        public ICommand TestCommand { get; set; }
+        public string NewFilterName { get; set; }
+        public ICommand SaveFilterCommand { get; set; }
         public ICommand SaveTemplateCommand { get; set; }
         private ObservableCollection<TemplateViewModel> LoadTemplates(int numberOfTemplates)
         {
@@ -33,24 +33,28 @@ namespace FilterTuneWPF
             }
             return (Templates);
         }
-        private void Test()
+        private void SaveFilter()
         {
             //System.Windows.Media.Color x = (System.Windows.Media.Color)s;
-            testString = "Black";
-            NotifyPropertyChanged("testString");
+            NewFilterName = "Black";
+            NotifyPropertyChanged("NewFilterName");
         }
         private ObservableCollection<TemplateViewModel> MockSavedTemplates { get; set; }
         public void SaveTemplate() //update Templates with NewTemplateName value of chosenTemplate
         {
-            Templates.Add(new TemplateViewModel(chosenTemplate.Selectors, chosenTemplate.Parameters, chosenTemplate.NewTemplateName));
-            NotifyPropertyChanged("Templates");
+            Templates.Add(new TemplateViewModel(chosenTemplate.Selectors, chosenTemplate.Parameters, chosenTemplate.NewTemplateName));//TODO check if it's an old template; provide the choice to overwrite or add new
         }
-        
+        public void RemoveTemplate(TemplateViewModel TemplateToRemove) 
+        {
+            Templates.Remove(TemplateToRemove);
+        }
         public MainScreenViewModel() //Initializing variables for main screen
         {
-            TestCommand = new GenericCommand(x => Test());
+            SaveFilterCommand = new GenericCommand(x => SaveFilter());
             Templates = LoadTemplates(5);
+            ChosenTemplate = Templates[0];
             MockSavedTemplates = LoadTemplates(5);
+            ViewFilters = new SourceFilters();
             SaveTemplateCommand = new GenericCommand(x => SaveTemplate());
         }
     }

@@ -31,10 +31,7 @@
         <!--<TextBlock Grid.Column="0" Text="Source Filter:"  Margin="5 5"/>-->
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin ="5 0 0 0">
-            <ComboBox FontWeight="Bold">
-                <ComboBoxItem>Bad filter</ComboBoxItem>
-                <ComboBoxItem>Trash filter</ComboBoxItem>
-                <ComboBoxItem IsSelected="True">Basic filter</ComboBoxItem>
+            <ComboBox FontWeight="Bold" ItemsSource="{Binding ViewFilters.Filters}" SelectedItem="{Binding ViewFilters.Selected}">
             </ComboBox>
 
             <Button x:Name="SelectWorkingDirectory" Content="...">
@@ -66,10 +63,10 @@
         </StackPanel>
         </Grid>
 
-        <Button Command = "{Binding TestCommand}" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" Content="Save new filter as"/>
+        <Button Command = "{Binding SaveFilterCommand}" Grid.Column="2" FontWeight="Bold" VerticalAlignment="Center" Content="Save new filter as"/>
         <!--I don't know if this part of window is needed-->
         <StackPanel Grid.Row="1" Grid.Column="2">
-            <TextBox VerticalAlignment="Center" Text="{Binding testString}"/>
+            <TextBox VerticalAlignment="Center" Text="{Binding NewFilterName}"/>
         </StackPanel>
     </Grid>
 </UserControl>
