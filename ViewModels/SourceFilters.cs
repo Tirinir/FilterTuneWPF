@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
 
 namespace FilterTuneWPF
@@ -27,16 +28,22 @@ namespace FilterTuneWPF
         //}
         private List<string> MockGetFilters()
         {
-            List<string> Filters = new List<string>();
+            var Filters = new List<string>();
             Filters.Add("A filter");
             Filters.Add("Another filter");
             Filters.Add("Third filter");
             return Filters;
         }
-        public SourceFilters()
+        public SourceFilters(string[] GetFilters, string ChosenFilter)
         {
-            Filters = new ObservableCollection<string>(MockGetFilters());
-            Selected = Filters[0];
+            if (GetFilters == null || GetFilters.Length == 0)
+            {
+                Filters = new ObservableCollection<string>(MockGetFilters());
+                Selected = Filters[0];
+                return;
+            }
+            Filters = new ObservableCollection<string>(GetFilters);
+            Selected = ChosenFilter;
         }
     }
 }

@@ -33,7 +33,7 @@
             <ComboBox FontWeight="Bold" ItemsSource="{Binding ViewFilters.Filters}" SelectedItem="{Binding ViewFilters.Selected}">
             </ComboBox>
 
-            <Button x:Name="SelectWorkingDirectory" Content="...">
+            <Button Command="{Binding FilterPathSourceCommand}" Content="...">
 
             </Button>
         </StackPanel>
@@ -48,7 +48,7 @@
             </ListView.InputBindings>
         </ListView>
         
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>

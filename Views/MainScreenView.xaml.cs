@@ -23,25 +23,25 @@ namespace FilterTuneWPF.Views
             InitializeComponent();
         }
 
-        //private void TemplateKeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.Delete && ((TextBox)sender).IsReadOnly)
-        //    {
-        //        MessageBox.Show($"Are you sure you want to delete {((TextBox)sender).Text}?");
-        //        e.Handled = true;
-        //    }
-        //}
+        ////private void TemplateKeyDown(object sender, KeyEventArgs e)
+        ////{
+        ////    if (e.Key == Key.Delete && ((TextBox)sender).IsReadOnly)
+        ////    {
+        ////        MessageBox.Show($"Are you sure you want to delete {((TextBox)sender).Text}?");
+        ////        e.Handled = true;
+        ////    }
+        ////}
 
-        private void EnableEditing(object sender, MouseButtonEventArgs e)
-        {
-            if (((TextBox)sender).IsKeyboardFocused)
-            {
-                ((TextBox)sender).IsReadOnly = false;
-            }    
-        }
-        private void DisableEditing(object sender, KeyboardEventArgs e)
-        {
-            ((TextBox)sender).IsReadOnly = true;
-        }
+        //private void EnableEditing(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (((TextBox)sender).IsKeyboardFocused)
+        //    {
+        //        ((TextBox)sender).IsReadOnly = false;
+        //    }    
+        //}
+        //private void DisableEditing(object sender, KeyboardEventArgs e)
+        //{
+        //    ((TextBox)sender).IsReadOnly = true;
+        //}
     }
 }

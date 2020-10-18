@@ -17,11 +17,23 @@
             <RowDefinition Height="*"/>
             <!-- Menu-->
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" Margin="20 0 20 0">
-            <TextBlock Text="Name" DockPanel.Dock="Left"/>
+        <DockPanel Grid.Row="0" VerticalAlignment="Center" Margin="20 0 20 0">
+            <TextBlock Text="Name" Margin="2" DockPanel.Dock="Left"/>
             <TextBox Text="{Binding TemplateName, UpdateSourceTrigger=PropertyChanged}"/>
         </DockPanel>
-        <TextBox Text="{Binding Selectors}" Grid.Row="1" Margin="20 0 20 0"/>
-        <TextBox Text="{Binding Parameters}" Grid.Row="2" Margin="20 20 20 0"/>
+        <TextBox 
+            Text="{Binding Selectors}" 
+            Grid.Row="1" 
+            Margin="20 0 20 0"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            />
+        <TextBox 
+            Text="{Binding Parameters}"                  
+            Grid.Row="2" 
+            Margin="20 20 20 0"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            />
     </Grid>
 </UserControl>
